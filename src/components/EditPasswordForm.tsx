@@ -2,6 +2,8 @@ import React from "react";
 import { useForm } from "react-hook-form";
 import PasswordField from "./PasswordField";
 import CustomButton from "./CustomButtom";
+import { useUser } from "../context/UserContext";
+import { useUpdateUser } from "../hooks/useUpdateUser";
 
 interface IFormInput {
   currentPassword: string;
@@ -10,6 +12,9 @@ interface IFormInput {
 }
 
 const MyForm: React.FC = () => {
+  const { updateUser, loading, error } = useUpdateUser();
+  const { user, setUser } = useUser();
+
   const {
     handleSubmit,
     watch,
@@ -17,13 +22,16 @@ const MyForm: React.FC = () => {
     formState: { errors },
   } = useForm<IFormInput>();
 
-  console.log("rendering");
+  const USER_ID = user?.id?.toString();
 
-  const onSubmit = (data: IFormInput) => {
-    console.log(data);
+  const onSubmit = async (data: IFormInput) => {
+    if (!USER_ID) return;
+    await updateUser(USER_ID, { password: data.newPassword }, user, setUser);
   };
 
   const newPassword = watch("newPassword");
+
+  if (!user) return null;
 
   return (
     <form onSubmit={handleSubmit(onSubmit)} className="form">
@@ -33,7 +41,11 @@ const MyForm: React.FC = () => {
           control={control}
           errors={errors}
           label="Current Password"
-          rules={{ required: "Current Password is required" }}
+          rules={{
+            required: "Current Password is required",
+            validate: (value: string) =>
+              value === user?.password || "Incorrect Password",
+          }}
         />
         <PasswordField
           name="newPassword"
@@ -70,9 +82,12 @@ const MyForm: React.FC = () => {
         <strong className="forgot-password">Forgot Password?</strong>
       </div>
 
-      <CustomButton type="submit" color="secondary">
-        Save
-      </CustomButton>
+      <div>
+        {error && <p className="error">{error}</p>}
+        <CustomButton type="submit" color="secondary" disabled={loading}>
+          {loading ? "Saving..." : "Save"}
+        </CustomButton>
+      </div>
     </form>
   );
 };

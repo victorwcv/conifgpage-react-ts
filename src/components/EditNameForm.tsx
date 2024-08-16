@@ -1,7 +1,8 @@
-import { useForm} from "react-hook-form";
+import { useForm } from "react-hook-form";
 import { useUser } from "../context/UserContext";
 import CustomTextField from "./CustomTextField";
 import CustomButton from "./CustomButtom";
+import { useUpdateUser } from "../hooks/useUpdateUser";
 
 interface IFormInput {
   firstname: string;
@@ -9,8 +10,8 @@ interface IFormInput {
 }
 
 const EditNameForm = () => {
-  const { user } = useUser();
-  
+  const { updateUser, loading, error } = useUpdateUser();
+  const { user, setUser } = useUser();
 
   const [firstname, lastname] = (user?.name?.split(" ") || ["", ""]) as [
     string,
@@ -23,8 +24,16 @@ const EditNameForm = () => {
     formState: { errors },
   } = useForm<IFormInput>();
 
-  const onSubmit = (data: IFormInput) => {
-    console.log({name:data.firstname + " " + data.lastname});
+  const USER_ID = user?.id?.toString();
+
+  const onSubmit = async (data: IFormInput) => {
+    if (!USER_ID) return;
+    await updateUser(
+      USER_ID,
+      { name: `${data.firstname} ${data.lastname}` },
+      user,
+      setUser
+    );
   };
 
   if (!user) return null;
@@ -32,7 +41,7 @@ const EditNameForm = () => {
   return (
     <form onSubmit={handleSubmit(onSubmit)} className="form">
       <div>
-        <CustomTextField 
+        <CustomTextField
           name="firstname"
           defaultValue={firstname}
           control={control}
@@ -50,9 +59,12 @@ const EditNameForm = () => {
           rules={{ required: "Field required" }}
         />
       </div>
-      <CustomButton type="submit" color="secondary">
-        Save
-      </CustomButton>
+      <div>
+        {error && <p className="error">{error}</p>}
+        <CustomButton type="submit" color="secondary" disabled={loading}>
+          {loading ? "Saving..." : "Save"}
+        </CustomButton>
+      </div>
     </form>
   );
 };
