@@ -47,6 +47,11 @@ const CustomTextField: React.FC<TextFieldProps> = ({
                 },
               },
             }}
+            FormHelperTextProps={{
+              sx: {
+                fontSize: "1.2rem",
+              },
+            }}
           />
         )}
       />

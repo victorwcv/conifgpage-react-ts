@@ -11,9 +11,11 @@ import HomeApp from "./pages/HomeApp";
 
 function App() {
   const { setUser } = useUser();
+
+  const USER_ID = "66bf7f915c726b3bfd05299a";
   
   useEffect(() => {
-    fetch("http://localhost:5163/api/user/66bf7f915c726b3bfd05299a")
+    fetch(`http://localhost:5163/api/user/${USER_ID}`)
       .then((res) => res.json())
       .then((data) => setUser(data));
   }, []);

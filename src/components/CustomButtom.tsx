@@ -8,6 +8,7 @@ interface CustomButtonProps {
   onClick?: () => void;
   type?: "button" | "submit" | "reset";
   sx?: SxProps; 
+  disabled?: boolean
 }
 
 const CustomButton = ({
@@ -15,6 +16,7 @@ const CustomButton = ({
   color ,
   onClick,
   type = "button",
+  disabled,
   sx = {},
 }: CustomButtonProps) => {
   return (
@@ -23,6 +25,8 @@ const CustomButton = ({
       variant="contained"
       color={color}
       onClick={onClick}
+      disabled={disabled}
+      fullWidth
       sx={{
         textTransform: "none",
         fontSize: "1.4rem",

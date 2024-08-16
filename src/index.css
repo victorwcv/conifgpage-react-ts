@@ -18,6 +18,8 @@ label {
 .layout {
   height: 100dvh;
   min-height: 650px;
+  min-width: 300px;
+  max-width: 700px;
   background-color: #f6fbff;
   overflow: hidden;
 }
@@ -61,4 +63,11 @@ label {
   margin-top: 7rem;
   font-size: 1.4rem;
   color: #599ebf;
+}
+
+.error {
+  color: red;
+  font-size: 1.2rem;
+  text-align: center;
+  margin-bottom: 2rem;
 }
