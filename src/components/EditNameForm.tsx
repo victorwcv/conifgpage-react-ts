@@ -10,6 +10,7 @@ interface IFormInput {
 
 const EditNameForm = () => {
   const { user } = useUser();
+  
 
   const [firstname, lastname] = (user?.name?.split(" ") || ["", ""]) as [
     string,
@@ -25,6 +26,8 @@ const EditNameForm = () => {
   const onSubmit = (data: IFormInput) => {
     console.log({name:data.firstname + " " + data.lastname});
   };
+
+  if (!user) return null;
 
   return (
     <form onSubmit={handleSubmit(onSubmit)} className="form">

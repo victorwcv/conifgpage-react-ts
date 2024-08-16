@@ -20,6 +20,8 @@ const EditUsernameForm = () => {
     console.log(data);
   };
 
+  if (!user) return null;
+
   return (
     <form onSubmit={handleSubmit(onSubmit)} className="form">
       <CustomTextField

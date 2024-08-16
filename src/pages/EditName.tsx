@@ -5,6 +5,7 @@ import EditNameForm from "../components/EditNameForm";
 
 const EditName = () => {
   const navigate = useNavigate();
+  
   return (
     <div className="layout">
       <div style={{ position: "relative" }}>

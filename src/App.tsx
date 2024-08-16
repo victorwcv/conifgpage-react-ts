@@ -11,7 +11,7 @@ import HomeApp from "./pages/HomeApp";
 
 function App() {
   const { setUser } = useUser();
-
+  
   useEffect(() => {
     fetch("http://localhost:5163/api/user/66bf7f915c726b3bfd05299a")
       .then((res) => res.json())
