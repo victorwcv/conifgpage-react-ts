@@ -5,6 +5,8 @@ export const useUpdateUser = () => {
   const [loading, setLoading] = useState(false);
   const [error, setError] = useState<string | null>(null);
 
+  const apiUrl = import.meta.env.VITE_API_URL;
+
   const updateUser = async (
     userId: string,
     change: object,
@@ -13,7 +15,7 @@ export const useUpdateUser = () => {
   ) => {
     try {
       setLoading(true);
-      const response = await fetch(`http://localhost:5163/api/user/${userId}`, {
+      const response = await fetch(`${apiUrl}/api/user/${userId}`, {
         method: "PUT",
         headers: {
           "Content-Type": "application/json",
