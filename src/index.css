@@ -1,0 +1,64 @@
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+html {
+  font-size: 62.5%;
+  font-family: sans-serif;
+}
+
+label {
+  display: block;
+  font-size: 1.2rem;
+  margin-bottom: 0.7rem;
+}
+
+.layout {
+  height: 100dvh;
+  min-height: 650px;
+  background-color: #f6fbff;
+  overflow: hidden;
+}
+
+.title {
+  text-align: center;
+  background-color: white;
+  padding: 3.5rem 0 1.5rem 0;
+  box-shadow: 0 2px 3px rgba(0, 0, 0, 0.1);
+}
+
+.setting {
+  display: flex;
+  flex-direction: column;
+  padding: 1.5rem 1rem;
+}
+
+.setting__title {
+  font-size: 1.5rem;
+}
+
+.setting__content {
+  font-size: 1.4rem;
+}
+
+.form {
+  height: calc(100% - 7.3rem);
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  padding: 3rem 2rem;
+}
+
+.form__input {
+  margin-bottom: 1.5rem;
+}
+
+.forgot-password {
+  display: block;
+  text-align: center;
+  margin-top: 7rem;
+  font-size: 1.4rem;
+  color: #599ebf;
+}
