@@ -1,11 +1,11 @@
 import { createContext, useContext, useState, ReactNode } from "react";
 import { User, UserContextType } from "../types/User";
 
-// UserContext 
+// UserContext
 const UserContext = createContext<UserContextType | null>(null);
 
 // UserContextProvider
-const UserProvider : React.FC<{ children: ReactNode }> = ({ children }) => {
+const UserProvider: React.FC<{ children: ReactNode }> = ({ children }) => {
   const [user, setUser] = useState<User | null>(null);
 
   return (
@@ -13,7 +13,7 @@ const UserProvider : React.FC<{ children: ReactNode }> = ({ children }) => {
       {children}
     </UserContext.Provider>
   );
-}
+};
 
 // Custom hook
 const useUser = (): UserContextType => {
@@ -22,6 +22,6 @@ const useUser = (): UserContextType => {
     throw new Error("useUser must be used within a UserProvider");
   }
   return context;
-}
+};
 
-export { UserProvider, useUser }
+export { UserProvider, useUser };

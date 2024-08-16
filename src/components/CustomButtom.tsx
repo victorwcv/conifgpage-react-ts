@@ -7,13 +7,13 @@ interface CustomButtonProps {
   color?: "primary" | "secondary" | "success" | "error" | "warning" | "info";
   onClick?: () => void;
   type?: "button" | "submit" | "reset";
-  sx?: SxProps; 
-  disabled?: boolean
+  sx?: SxProps;
+  disabled?: boolean;
 }
 
 const CustomButton = ({
   children,
-  color ,
+  color,
   onClick,
   type = "button",
   disabled,
@@ -33,7 +33,7 @@ const CustomButton = ({
         borderRadius: "1.2rem",
         padding: "1rem 3rem",
         fontWeight: "bold",
-        ...sx, 
+        ...sx,
       }}
     >
       {children}

@@ -1,24 +1,24 @@
-import { createTheme } from '@mui/material/styles';
+import { createTheme } from "@mui/material/styles";
 
 const palette = {
   primary: {
-    light: '#ffffff', 
-    main: '#ffffff',  
-    dark: '#f5f5f5',   
-    contrastText: '#000000', 
+    light: "#ffffff",
+    main: "#ffffff",
+    dark: "#f5f5f5",
+    contrastText: "#000000",
   },
   secondary: {
-    light: '#d4efb1',  
-    main: '#a8df63',   
-    dark: '#688a3d',   
-    contrastText: '#283518', 
+    light: "#d4efb1",
+    main: "#a8df63",
+    dark: "#688a3d",
+    contrastText: "#283518",
   },
-  info : {
+  info: {
     light: "#e1eef3",
     main: "#96c3d6",
     dark: "#6b9db6",
-    contrastText: "#ffffff"
-  }
+    contrastText: "#ffffff",
+  },
 };
 
 const theme = createTheme({

@@ -1,5 +1,5 @@
-import { useState } from 'react';
-import { User } from '../types/User';
+import { useState } from "react";
+import { User } from "../types/User";
 
 export const useUpdateUser = () => {
   const [loading, setLoading] = useState(false);
@@ -14,22 +14,22 @@ export const useUpdateUser = () => {
     try {
       setLoading(true);
       const response = await fetch(`http://localhost:5163/api/user/${userId}`, {
-        method: 'PUT',
+        method: "PUT",
         headers: {
-          'Content-Type': 'application/json',
+          "Content-Type": "application/json",
         },
-        body: JSON.stringify({...user, ...change }),
+        body: JSON.stringify({ ...user, ...change }),
       });
 
       if (!response.ok) {
-        throw new Error('Failed to update user.');
+        throw new Error("Failed to update user.");
       }
 
       const updatedUser = await response.json();
       setUser(updatedUser);
     } catch (err) {
-      console.error('Error updating user:', err);
-      setError('Failed to update user. Please try again.');
+      console.error("Error updating user:", err);
+      setError("Failed to update user. Please try again.");
     } finally {
       setLoading(false);
     }

@@ -1,9 +1,7 @@
-import { Outlet } from 'react-router-dom'
+import { Outlet } from "react-router-dom";
 
 function HomeApp() {
-  return (
-    <Outlet />
-  )
+  return <Outlet />;
 }
 
-export default HomeApp
+export default HomeApp;
