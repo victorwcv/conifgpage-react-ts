@@ -20,6 +20,7 @@ const MyForm: React.FC = () => {
     watch,
     control,
     formState: { errors },
+    reset,
   } = useForm<IFormInput>();
 
   const USER_ID = user?.id?.toString();
@@ -27,6 +28,7 @@ const MyForm: React.FC = () => {
   const onSubmit = async (data: IFormInput) => {
     if (!USER_ID) return;
     await updateUser(USER_ID, { password: data.newPassword }, user, setUser);
+    reset();
   };
 
   const newPassword = watch("newPassword");
