@@ -8,6 +8,7 @@ import EditUsername from "./pages/EditUsername";
 import theme from "./theme/palette";
 import { ThemeProvider } from "@mui/material";
 import HomeApp from "./pages/HomeApp";
+import MainPage from "./pages/MainPage";
 
 function App() {
   const { setUser } = useUser();
@@ -26,6 +27,7 @@ function App() {
     <ThemeProvider theme={theme}>
       <Router>
         <Routes>
+          <Route path="/" element={<MainPage />} />
           <Route path="/profile-setting" element={<HomeApp />}>
             <Route index element={<ProfileSetting />} />
             <Route path="edit-name" element={<EditName />} />
