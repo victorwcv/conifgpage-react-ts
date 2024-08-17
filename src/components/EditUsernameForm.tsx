@@ -23,7 +23,12 @@ const EditUsernameForm = () => {
 
   const onSubmit = async (data: IFormInput) => {
     if (!USER_ID) return;
-    await updateUser(USER_ID, { username: data.username }, user, setUser);
+    await updateUser(
+      USER_ID,
+      { username: data.username.trim() },
+      user,
+      setUser
+    );
   };
 
   if (!user) return null;

@@ -30,7 +30,7 @@ const EditNameForm = () => {
     if (!USER_ID) return;
     await updateUser(
       USER_ID,
-      { name: `${data.firstname} ${data.lastname}` },
+      { name: `${data.firstname.trim()} ${data.lastname.trim()}` },
       user,
       setUser
     );
